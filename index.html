@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>مسابقة الدرس</title>
+<meta name="theme-color" content="#0b0807">
+<link href="https://fonts.googleapis.com/css2?family=Aref+Ruqaa:wght@400;700&family=Reem+Kufi:wght@500;700&family=Amiri:wght@400;700&display=swap" rel="stylesheet">
+<style>
+:root{--ink:#1c1210;--ink2:#3a2622;--tq:#7b1e24;--gold:#c9993a;--paper:#fbf5e6;--paper2:#f3e9cf;--ok:#2f8f4e;--bad:#b3392f}
+*{box-sizing:border-box;margin:0}
+body{font-family:'Amiri',serif;font-size:19px;color:var(--ink);background:var(--paper) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='80' height='80'%3E%3Cpath d='M40 6l8 14 15-6-6 15 14 8-14 8 6 15-15-6-8 14-8-14-15 6 6-15-14-8 14-8-6-15 15 6z' fill='none' stroke='%23d9992b' stroke-opacity='.22' stroke-width='1.2'/%3E%3C/svg%3E");min-height:100vh}
+h1,h2,h3,button,.kufi{font-family:'Reem Kufi',sans-serif}
+.wrap{max-width:560px;margin:auto;padding:0 16px 40px}
+header{background:#0b0807;color:var(--paper);text-align:center;padding:26px 16px 34px;border-bottom:5px solid var(--gold);position:relative}
+header:after{content:"";position:absolute;bottom:-14px;left:50%;width:22px;height:22px;background:var(--gold);transform:translateX(-50%) rotate(45deg)}
+.teacher{font-family:'Reem Kufi';color:var(--gold);letter-spacing:.5px;font-size:16px}
+.title{font-family:'Aref Ruqaa';font-size:clamp(38px,11vw,58px);font-weight:700;line-height:1.3;margin:6px 0 2px}
+.sub{opacity:.8;font-size:17px}
+.card{background:#fffdf7;border:2px solid var(--ink);border-radius:18px;padding:20px;margin-top:30px;box-shadow:6px 6px 0 var(--gold)}
+.card h2{font-size:24px;color:var(--tq);margin-bottom:12px}
+input{width:100%;font:inherit;padding:12px 14px;margin-bottom:12px;border:2px solid var(--paper2);border-radius:12px;background:var(--paper);color:var(--ink)}
+input:focus{outline:none;border-color:var(--tq)}
+button{font-size:20px;cursor:pointer;border:0;border-radius:14px;padding:13px 22px;background:var(--tq);color:#fff;width:100%;box-shadow:0 4px 0 #450e13}
+button:active{transform:translateY(3px);box-shadow:0 1px 0 #450e13}
+button.alt{background:var(--paper2);color:var(--ink);box-shadow:0 4px 0 #cdbd94;margin-top:12px}
+.hide{display:none!important}
+.bar{height:10px;background:var(--paper2);border-radius:9px;overflow:hidden;margin:6px 0 16px}
+.bar i{display:block;height:100%;width:100%;background:var(--gold);transition:width 1s linear}
+.meta{display:flex;justify-content:space-between;font-family:'Reem Kufi';font-size:17px}
+.q{font-size:26px;line-height:1.7;margin:8px 0 16px;font-weight:700}
+.opt{margin-bottom:10px;background:var(--paper);color:var(--ink);border:2px solid var(--ink);box-shadow:none;text-align:right;font-family:'Amiri';font-weight:700;font-size:21px}
+.opt.ok{background:var(--ok);color:#fff;border-color:var(--ok)}.opt.bad{background:var(--bad);color:#fff;border-color:var(--bad)}
+.big{font-family:'Aref Ruqaa';font-size:72px;color:var(--gold);text-align:center;line-height:1.1}
+.center{text-align:center}
+ol.lb{list-style:none;padding:0}
+ol.lb li{display:flex;gap:10px;align-items:center;padding:10px 6px;border-bottom:1px dashed var(--paper2)}
+ol.lb li.me{background:#f6e3e1;border-radius:10px}
+ol.lb b{font-family:'Reem Kufi';width:34px;height:34px;flex:none;display:grid;place-items:center;border-radius:50%;background:var(--ink);color:var(--paper);font-size:16px}
+ol.lb li:nth-child(1) b{background:var(--gold);color:var(--ink)}
+ol.lb span{flex:1}ol.lb em{font-style:normal;font-family:'Reem Kufi';color:var(--tq);font-size:20px}
+.note{font-size:15px;background:#fff3d6;border-radius:10px;padding:8px 12px;margin-top:14px}
+.logo{width:120px;height:120px;border-radius:50%;border:3px solid var(--gold);display:block;margin:0 auto 10px;object-fit:cover}.ava{width:80px;height:80px;border-radius:50%;object-fit:cover;border:3px solid var(--gold);flex:none}.top{display:flex;gap:14px;align-items:center;margin-bottom:8px}.top h2{margin:0}details{background:var(--paper);border-radius:12px;padding:10px 14px;margin-bottom:14px;font-size:18px;line-height:1.8}summary{cursor:pointer;font-family:"Reem Kufi";color:var(--tq)}.tabs{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:24px}.tabs button{font-size:18px;padding:12px 6px;background:#fffdf7;color:var(--ink);border:2px solid var(--ink);box-shadow:3px 3px 0 var(--gold)}.tabs button.on{background:var(--tq);color:#fff;border-color:var(--tq)}.vf{position:relative;padding-top:56%;border-radius:14px;overflow:hidden;background:#0b0807;margin-top:12px}.vf iframe,.vf div{position:absolute;inset:0;width:100%;height:100%;border:0;display:grid;place-items:center;color:var(--gold);font-family:"Reem Kufi"}.ex{border:2px solid var(--paper2);border-radius:12px;padding:10px 14px;margin-bottom:10px;line-height:1.9}.ex summary b{color:var(--tq)}.r{color:#c0281c}.sol{background:#e7f3e9;border-radius:10px;padding:8px 12px;margin-top:8px}.br{border-right:5px solid var(--gold);padding:4px 12px;margin:10px 0;background:var(--paper)}.br b{color:var(--tq)}.br span{display:inline-block;background:#fff;border:1px solid var(--gold);border-radius:20px;padding:0 10px;margin:3px 2px;font-size:17px}a.dl{display:block;text-align:center;text-decoration:none;font-family:"Reem Kufi";background:var(--gold);color:var(--ink);border-radius:14px;padding:12px;margin-top:10px}@media print{body *{visibility:hidden}#mmPrint,#mmPrint *{visibility:visible}#mmPrint{position:absolute;top:0;right:0;left:0}}footer{text-align:center;font-size:14px;opacity:.6;margin-top:26px}
+table{width:100%;border-collapse:collapse;font-size:15px}td,th{border-bottom:1px solid var(--paper2);padding:6px;text-align:right}
+</style>
+</head>
+<body>
+<header>
+  <img class="logo" src="logo.jpg" alt=""><div class="teacher" id="tName"></div>
+  <div class="title" id="lTitle"></div>
+  <div class="sub" id="lSub"></div>
+</header>
+<div class="wrap">
+
+<!-- التسجيل -->
+<section id="sReg" class="card hide">
+  <h2>سجّل اسمك للمشاركة</h2>
+  <input id="fn" placeholder="الاسم الكامل">
+  <input id="ph" type="tel" inputmode="numeric" placeholder="رقم الهاتف (لحفظ نتائجك)">
+  <button id="btnReg">ادخل المسابقة</button>
+  <div class="note">يُستعمل التسجيل فقط لحفظ بياناتك ونتائجك، ولا توجد أي موافقة أو انتظار.</div>
+</section>
+
+<!-- الرئيسية: صفحة الدرس -->
+<section id="sHome" class="hide">
+  <div class="card">
+    <div class="top"><img class="ava" src="teacher.jpg" alt=""><h2 id="hi"></h2></div>
+    <h3 style="color:var(--gold)">📌 تعريف</h3><p id="defTxt"></p><details class="ex"><summary><b>📖 ملخص الدرس</b></summary><div id="sumBox"></div></details>
+    <div class="vf" id="vid"></div>
+  </div>
+  <div class="tabs" id="tabs"></div>
+  <div class="card pn" id="pnEx"><h2>📝 تمارين الدرس</h2><div id="exList"></div></div>
+  <div class="card pn hide" id="pnQz"><h2>✅ اختبار الفهم</h2><p style="margin-bottom:12px">أسئلة بلا وقت ولا ترتيب: اختبر فهمك وتعلّم من التصحيح الفوري.</p><button id="btnComp">ابدأ اختبار الفهم</button></div>
+  <div class="card pn hide" id="pnMm"><div id="mmPrint"><h2>🧠 الخريطة الذهنية</h2><div id="mmTree"></div></div><a class="dl" id="mmBtn" href="#">⬇️ تحميل الخريطة الذهنية</a></div>
+  <div class="card pn hide" id="pnCh"><h2>⚔️ تحدّي التلاميذ</h2><p id="lessonInfo" style="margin-bottom:10px"></p><div id="mine" class="center kufi" style="margin-bottom:12px"></div><button id="btnStart">ابدأ التحدّي</button><h2 style="margin-top:22px">🏆 لوحة الشرف</h2><ol class="lb" id="lb1"></ol></div>
+</section>
+
+<!-- الأسئلة -->
+<section id="sQuiz" class="card hide">
+  <div class="meta"><span id="qn"></span><span id="sc"></span></div>
+  <div class="bar"><i id="tb"></i></div>
+  <div class="q" id="qt"></div>
+  <div id="opts"></div>
+</section>
+
+<!-- النتيجة -->
+<section id="sEnd" class="hide">
+  <div class="card center">
+    <h2>انتهى التحدّي</h2>
+    <div class="big" id="fin"></div>
+    <p id="finMsg" class="kufi"></p>
+    <button class="alt" id="btnHome">العودة للدرس</button>
+  </div>
+</section>
+
+<footer><span id="fTeacher"></span></footer>
+</div>
+
+<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore-compat.js"></script>
+<script>
+/* ==================== ✏️ كل ما تحتاج تغييره هنا ==================== */
+const CONFIG = {
+  lessonId:"atf-nasaq",                   // معرّف الدرس (يُسمّي مجموعة البيانات؛ غيّره لكل درس)
+  teacher: "الأستاذ يوسف سعيدي",
+  lesson:  "عطف النسق",
+  subtitle:"السنة الرابعة متوسط · الدرس 01 · تحدّي التلاميذ",
+  info:    "أجب بسرعة ودقّة؛ كلما كانت إجابتك أسرع زادت نقاطك.",
+  def: "عطف النسق: تابع يتوسط بينه وبين متبوعه أداة من أدوات العطف.",
+  video: "",                              // رابط تضمين يوتيوب مثل https://www.youtube.com/embed/XXXX (فارغ = "قريبًا")
+  mindmapFile: "",                        // ملف الخريطة الجاهزة مثل mindmap.pdf أو mindmap.png (فارغ = طباعة/حفظ PDF من الصفحة)
+  tree: [["أركان العطف",["المعطوف عليه: قبل الأداة، يُعرب حسب موقعه في الجملة","أداة العطف: حرف مبني لا محل له من الإعراب","المعطوف: بعد الأداة، يُعرب حسب المعطوف عليه"]],
+    ["حروف العطف التسعة · مشاركة في اللفظ والحكم (الإعراب والمعنى)",["و: الجمع والاشتراك","فـ: الترتيب والتعقيب","ثم: الترتيب والتراخي","حتى: الغاية والتدريج","أو: التخيير أو التشكيك","أم: التعيين أو التسوية"]],
+    ["مشاركة في اللفظ فقط (الإعراب)",["بل: الإضراب","لا: النفي","لكن: الاستدراك"]],
+    ["ملاحظات",["لا يُشترط أن يكون المعطوف عليه قبل الأداة مباشرة","لا يُشترط أن يتبع المعطوفُ المعطوفَ عليه في الحركة","«لكن» يسبقها نفي","«حتى» ما بعدها اسم وجزء مما قبلها"]]],
+  lessonHtml: `<div class="br"><b>الأمثلة</b><br>1- صلّى الإمامُ والمأمومُ<br>2- دخل الأستاذُ ثمّ المديرُ<br>3- حصدنا القمحَ لا الشعيرَ</div>
+   <div class="br"><b>القاعدة</b><br>عطف النسق: تابع يتوسط بينه وبين متبوعه أداة من أدوات العطف.</div>
+   <div class="br"><b>أركان العطف</b><br>1- المعطوف عليه: يأتي قبل حرف العطف ويُعرب حسب موقعه في الجملة.<br>2- حرف العطف: يُعرب حرف عطف مبني لا محل له من الإعراب.<br>3- المعطوف: يأتي بعد حرف العطف ويُعرب حسب المعطوف عليه.</div>
+   <div class="br"><b>حروف العطف: تسعة</b><br>ستة تدل على المشاركة في اللفظ والحكم (الإعراب والمعنى)، وثلاثة تدل على المشاركة في اللفظ فقط (الإعراب).<br>• و: الجمع والاشتراك · فـ: الترتيب والتعقيب · ثمّ: الترتيب والتراخي<br>• حتّى: الغاية والتدريج (يموت الناس حتى الأنبياء) · أو: التخيير أو التشكيك · أم: التعيين أو التسوية<br>• بل: الإضراب · لا: النفي · لكن: الاستدراك</div>
+   <div class="br"><b>ملحوظة</b><br>• لا يُشترط في المعطوف عليه أن يكون قبل حرف العطف مباشرة (رأيت أستاذَ اللغةِ والمديرَ).<br>• لا يُشترط في المعطوف أن يتبع المعطوف عليه في الحركة الإعرابية (رأيت المعلماتِ والمديرَ).<br>• يُشترط في «لكن» أن يسبقها نفي.<br>• يُشترط في «حتى» أن يكون ما بعدها اسما (لا جملة) وجزءا مما قبلها.</div>`,
+  exercises: [
+    [`التمرين 01 : ضع معطوفا أو معطوفا عليه في المكان المناسب مع ضبط الشكل :`,`01- ترتقي الأمم بالعلم و ................<br>02- يعجبني ................ لا قولُه<br>03- امنح صديقك ................ و الإخلاص<br>04- اركب قطارا أو ................<br>05- لا بدّ للتاجر من ................ و الأمانة<br>06- سافرت يوم الخميس ثمّ ................<br>07- الكسل يُكسب ................ و الخيبة<br>08- ما اشتريت كتابا بل ................<br>09- أيّهما تفضّل ................ أم الشتاء`,`01- ترتقي الأمم بالعلم و <b class='r'>العملِ</b><br>02- يعجبني <b class='r'>فعلُه</b> لا قولُه<br>03- امنح صديقك <b class='r'>الثقةَ</b> و الإخلاص<br>04- اركب قطارا أو <b class='r'>حماراً</b><br>05- لا بدّ للتاجر من <b class='r'>الصدقِ</b> و الأمانة<br>06- سافرت يوم الخميس ثمّ <b class='r'>الجمعةِ</b><br>07- الكسل يُكسب <b class='r'>الفشلَ</b> و الخيبة<br>08- ما اشتريت كتابا بل <b class='r'>قصةً</b><br>09- أيّهما تفضّل <b class='r'>الصيفَ</b> أم الشتاء`],
+    [`التمرين 02 : أعرب ما تحته خط في الجمل التالية :`,`01- الطالب <u>بالعمل</u> <u>لا</u> <u>الكسل</u><br>02- أغادر الأمير <u>القصر</u> <u>أم</u> <u>البلاد</u> ؟<br>03- نجح <u>المجتهدون</u> <u>لا</u> <u>الكسالى</u><br>04- ما فاز <u>الكفّار</u> <u>لكنْ</u> <u>الأتقياء</u><br>05- قابلت <u>المعلماتِ</u> <u>ف</u><u>المدير</u>`,`<b class='r'>العمل</b> : اسم مجرور بالباء و علامة جرّه الكسرة الظاهرة على آخره .<br><b class='r'>لا</b> : حرف عطف مبني لا محل له من الإعراب .<br><b class='r'>الكسل</b> : اسم معطوف مجرور و علامة جرّه الكسرة الظاهرة على آخره .<br><b class='r'>القصر</b> : مفعول به منصوب و علامة نصبه الفتحة الظاهرة على آخره .<br><b class='r'>أم</b> : حرف عطف مبني لا محل له من الإعراب .<br><b class='r'>البلاد</b> : اسم معطوف منصوب و علامة نصبه الفتحة الظاهرة على آخره .<br><b class='r'>المجتهدون</b> : فاعل مرفوع و علامة رفعه الواو لأنّه جمع مذكر سالم .<br><b class='r'>لا</b> : حرف عطف مبني لا محل له من الإعراب .<br><b class='r'>الكسالى</b> : اسم معطوف مرفوع و علامة رفعه الضمة المقدرة على آخره منع من ظهورها التعذر .<br><b class='r'>الكفار</b> : فاعل مرفوع و علامة رفعه الضمة الظاهرة على آخره .<br><b class='r'>لكن</b> : حرف عطف مبني لا محل له من الإعراب .<br><b class='r'>الأتقياء</b> : اسم معطوف مرفوع و علامة رفعه الضمة الظاهرة على آخره .<br><b class='r'>المعلمات</b> : مفعول به منصوب و علامة نصبه الكسرة نيابة عن الفتحة لأنه جمع مؤنث سالم .<br><b class='r'>ف</b> : حرف عطف مبني لا محل له من الإعراب .<br><b class='r'>المدير</b> : اسم معطوف منصوب و علامة نصبه الفتحة الظاهرة على آخره .`],
+    [`التمرين 03 : أكمل الفراغات بما يناسبها :`,`01- الاسم المعطوف يكون منصوبا إذا كان ................<br>02- حرف العطف (بل) يفيد ................<br>03- المعطوف عليه يُعرب ................<br>04- حرف العطف الذي يفيد الاستدراك هو ................<br>05- حرف العطف يُعرب ................<br>06- حرف العطف ثمّ يفيد ................`,`01- الاسم المعطوف يكون منصوبا إذا كان <b class='r'>المعطوف عليه منصوبا</b><br>02- حرف العطف (بل) يفيد <b class='r'>الإضراب</b><br>03- المعطوف عليه يُعرب <b class='r'>حسب موقعه في الجملة</b><br>04- حرف العطف الذي يفيد الاستدراك هو <b class='r'>لكن</b><br>05- حرف العطف يُعرب <b class='r'>حرف مبني لا محل له من الإعراب</b><br>06- حرف العطف ثمّ يفيد <b class='r'>الترتيب و التراخي</b>`]
+  ],
+  secondsPerQuestion: 30,
+  perRound: 20,                           // عدد الأسئلة في كل محاولة (تُختار عشوائيا)
+  firebase: {                             // مفاتيح Firebase الجديدة لهذا التطبيق
+    apiKey:"ضع_المفتاح", authDomain:"", projectId:"", storageBucket:"", messagingSenderId:"", appId:""
+  },
+  // كل سؤال: [النص، الإجابة الصحيحة، خيار خاطئ، ...]
+  questions: [
+["حرف العطف الذي يفيد الاستدراك هو:","لكن","بل","أم","حتى"],
+["في «ما اشتريت بيتا لكن شقة» تفيد «لكن»:","الاستدراك","التخيير","التعيين","الترتيب والتعقيب"],
+["في «ما شربت ماء بل عصيرا» تفيد «بل»:","الإضراب","الاستدراك","التخيير","التعيين"],
+["في «خذ التفاحة أو البرتقالة» تفيد «أو»:","التخيير","التعيين","الإضراب","النفي"],
+["في «أجئت راكبا أم ماشيا؟» تفيد «أم»:","التعيين","التخيير","الاستدراك","الغاية"],
+["في «قرأت الكتاب حتى الخاتمة» تفيد «حتى»:","التدرج والغاية","الترتيب والتعقيب","النفي","التعيين"],
+["في «كتب الطالب مقالا لا قصة» تفيد «لا»:","النفي","الإضراب","التخيير","الاستدراك"],
+["في «زارنا محمد وعلي» تفيد «و»:","مطلق الجمع والاشتراك","الترتيب والتعقيب","التخيير","الإضراب"],
+["أكمل: تخرج من الجامعة الطبيب … الجراح (الترتيب والتعقيب)","فـ","ثم","أو","لكن"],
+["أكمل: ما كتبت درسا … بحثا (الاستدراك)","لكن","بل","أم","لا"],
+["أكمل: أهذا خطك … خط زميلك؟ (التعيين)","أم","أو","بل","ثم"],
+["أكمل: غرس الفلاح البذور … حصد الزرع (الترتيب والتراخي)","ثم","فـ","لكن","حتى"],
+["أكمل: قل الحق … الباطل (نفي الحكم عما بعده)","لا","بل","أم","لكن"],
+["أكمل: ما نجح الكسول … المجتهد (الإضراب بعد نفي)","بل","لا","أو","فـ"],
+["أركان العطف هي:","المعطوف عليه، أداة العطف، المعطوف","المبتدأ، الخبر، الفعل","الفاعل، المفعول، الفعل","المعطوف، النعت، المنعوت"],
+["يُعرب المعطوف عليه:","حسب موقعه في الجملة","حسب المعطوف","دائما مفعولا به","دائما مبتدأ"],
+["يكون الاسم المعطوف منصوبا إذا كان المعطوف عليه:","منصوبا","مرفوعا","مجرورا","مبنيا"],
+["حرف العطف يُعرب:","حرف عطف مبني لا محل له من الإعراب","اسما معطوفا","فعلا مبنيا","حرف جر"],
+["اختر الصواب: سلمت على أخيك و…","أبيك","أباك","أبوك","أبو"],
+["اختر الصواب: تنافس المجتهدون و…","المثابرون","المثابرين"],
+["اختر الصواب: شارك المهندسون في المشروع و…","البناؤون","البنائين"],
+["اختر الصواب: لم يحضر الوزير لكن …","وكيلُه","وكيلَه","وكيلِه"],
+["«المعطوف يأتي بعد حرف العطف مباشرة»","صحيح","خطأ"],
+["«المعطوف عليه يأتي دائما قبل حرف العطف مباشرة»","خطأ","صحيح"],
+["«عدد حروف العطف ستة حروف»","خطأ","صحيح"],
+["«المعطوف عليه يُعرب حسب المعطوف»","خطأ","صحيح"],
+["إعراب «المشرفين» في «كافأت المديرة المعلمات والمشرفين»:","معطوف منصوب وعلامة نصبه الياء لأنه جمع مذكر سالم","معطوف مرفوع وعلامة رفعه الواو","معطوف مجرور وعلامة جره الكسرة","مفعول به منصوب وعلامة نصبه الفتحة"],
+["علامة نصب «أخاك» في «هل قابلت أباك أم أخاك الأكبر؟»:","الألف لأنه من الأسماء الخمسة","الفتحة الظاهرة","الياء","الكسرة"],
+["إعراب «المدير» في «حضر المعلمون ثم المدير»:","معطوف مرفوع وعلامة رفعه الضمة","معطوف منصوب وعلامة نصبه الفتحة","معطوف مجرور بالكسرة","مبتدأ مرفوع"],
+["«زارنا محمد لكن خالد» خطأ لأن «لكن»:","يجب أن يسبقها نفي","لا تفيد العطف","تأتي بعد الفعل فقط","تفيد الترتيب"],
+["في «قرأت القصة ثم الرواية»: المعطوف عليه هو:", "القصة", "الرواية", "ثم", "قرأت"],
+["في «ما صادقت خائنا لكن مخلصا»: المعطوف هو:", "مخلصا", "خائنا", "لكن", "صادقت"],
+["في «أتسافر بالقطار أم الطائرة؟»: أداة العطف هي:", "أم", "القطار", "الطائرة", "الباء"],
+["في «استمعت إلى خطبة الجمعة فالدرس»: المعطوف هو:", "الدرس", "الجمعة", "خطبة", "استمعت"],
+["في «حفظت القصيدة لا المقال»: المعطوف عليه هو:", "القصيدة", "المقال", "لا", "حفظت"],
+["في «لبثنا يوما أو بعض يوم»: أداة العطف هي:", "أو", "يوما", "بعض", "لبثنا"],
+["في «ما أكلت تفاحا بل عنبا»: المعطوف هو:", "عنبا", "تفاحا", "بل", "أكلت"],
+["«رأيت الطبيبَ والمعلمون في القاعة» الصواب:", "والمعلمين لأنه معطوف منصوب بالياء", "والمعلمون كما هي", "والمعلمان لأنه مثنى", "والمعلمينَ لأنه مجرور"],
+["«ما تكلمت بالباطل لا الحق» خطأ لأن «لا»:", "لا يجوز أن يسبقها نفي", "يجب أن يسبقها نفي", "لا تعطف الأسماء", "حرف جر"],
+["«سلمت على الفائزون والمتفوقين» الصواب:", "الفائزين لأنه مجرور بعلى", "الفائزون كما هي", "الفائزان لأنه مثنى", "الفائزين لأنه منصوب"],
+["«حضر الطلاب ثم المعلمين إلى القسم» الصواب:", "المعلمون لأنه معطوف على فاعل مرفوع", "المعلمين كما هي", "المعلمان", "المعلمينَ لأنه مفعول به"],
+["أكمل بالضبط: كرّم المدير المتفوقين في المسابقة و…", "المتفوقاتِ", "المتفوقاتُ", "المتفوقاتَ", "المتفوقون"],
+["أكمل: ما رافقت الكاذب لكن …", "الصادقَ", "الصادقُ", "الصادقِ", "صادقٌ"],
+["أكمل: قرأت في العطلة كتابا ثم …", "قصةً", "قصةٌ", "قصةٍ", "قصةُ"],
+["أكمل: دخل الملعب اللاعبون فـ …", "الحكامُ", "الحكامَ", "الحكامِ", "حكاما"],
+["أكمل: ما غاب عن الدرس محمد بل …", "خالدٌ", "خالدًا", "خالدٍ", "خالدون"],
+["أكمل: سلمت على المعلمين و …", "المعلماتِ", "المعلماتُ", "المعلماتَ", "المعلمون"],
+["أكمل: يموت الناس جميعا حتى …", "الأنبياءُ", "الأنبياءَ", "الأنبياءِ", "أنبياءَ"],
+["أكمل: شكرت المديرة الطالبات و …", "المعلماتِ", "المعلماتُ", "المعلماتَ", "المعلمون"],
+["أكمل بمعطوف عليه مناسب: قرأ الطالب … ثم المجلة", "الكتابَ", "الكتابُ", "الكتابِ", "كتابٌ"],
+["أكمل: أتفضل قراءة … أم النثر؟", "الشعرِ", "الشعرُ", "الشعرَ", "شعرٌ"],
+["أكمل: ينجح … لا الكسول في مسعاه", "المجتهدُ", "المجتهدَ", "المجتهدِ", "المجتهدون"],
+["أكمل: ما اشتريت … بل تفاحا ناضجا", "عنبا", "عنبٌ", "عنبٍ", "عنبُ"],
+["أكمل: نزل … السفينةِ حتى الأطفال بسلام", "ركابُ", "ركابَ", "ركابِ", "ركابًا"],
+["أكمل: لا تصاحب … بل الأمين", "الخائنَ", "الخائنُ", "الخائنِ", "خائنٌ"],
+["«حرف العطف «و» يفيد الترتيب»", "خطأ", "صحيح"],
+["«حرف العطف «حتى» يفيد الترتيب»", "خطأ", "صحيح"],
+["«المعطوف يُعرب حسب المعطوف عليه»", "صحيح", "خطأ"],
+["إعراب «الصفح» في «لا ترجُ العفو أو الصفح من لئيم»:", "اسم معطوف منصوب وعلامة نصبه الفتحة الظاهرة", "اسم معطوف مرفوع وعلامة رفعه الضمة", "مفعول به ثانٍ مجرور", "فاعل مرفوع"],
+["إعراب «فصولها» في «قرأت الرواية حتى فصولها الأخيرة»:", "اسم معطوف منصوب وعلامة نصبه الفتحة، والهاء مضاف إليه", "اسم معطوف مرفوع وعلامة رفعه الضمة", "اسم مجرور بحتى", "مفعول به ثانٍ"],
+["إعراب «المخلصين» في «ما صادقت ذا الوجهين لكن المخلصين»:", "معطوف منصوب وعلامة نصبه الياء لأنه جمع مذكر سالم", "معطوف مجرور وعلامة جره الياء", "معطوف منصوب وعلامة نصبه الفتحة", "مفعول به منصوب بالكسرة"],
+["إعراب «عمَّك» في «شكرت أخويك وعمَّك على حسن الاستقبال»:", "اسم معطوف منصوب وعلامة نصبه الفتحة الظاهرة، والكاف مضاف إليه", "اسم معطوف مجرور وعلامة جره الكسرة", "مفعول به ثانٍ مرفوع", "اسم معطوف منصوب وعلامة نصبه الألف"],
+["إعراب «أسلوبه» في «أأعجبك شرحُ الأستاذِ أم أسلوبُه؟»:", "اسم معطوف مرفوع وعلامة رفعه الضمة، والهاء مضاف إليه", "اسم معطوف منصوب وعلامة نصبه الفتحة", "مفعول به منصوب", "مضاف إليه مجرور"],
+["«حضر المعلمون ثم المديرُ»: سبب رفع «المدير»:", "معطوف على «المعلمون» المرفوع فارتفع مثله", "لأنه مبتدأ", "لأنه مضاف إليه", "لأنه معطوف على منصوب"],
+["«ما صادقت خائنا لكن مخلصا»: سبب نصب «مخلصا»:", "معطوف على «خائنا» المنصوب", "لأنه فاعل", "لأنه جمع مؤنث سالم", "لأنه خبر كان"],
+["«رأيت أخاك وصديقَه»: سبب نصب «صديقَه»:", "معطوف على «أخاك» المنصوب", "لأنه فاعل", "لأنه مضاف إليه", "لأنه من الأسماء الخمسة"],
+["«إن الصدقَ والأمانةَ من شيم الكرام»: سبب نصب «الأمانة»:", "معطوف على اسم «إنّ» المنصوب", "لأنه خبر إنّ", "لأنه فاعل", "لأنه مفعول مطلق"],
+["«دخل مدير المؤسسة ثم العاملون»: سبب رفع «العاملون» بالواو:", "جمع مذكر سالم معطوف على «مدير» المرفوع", "لأنه مثنى", "لأنه من الأسماء الخمسة", "لأنه جمع مؤنث سالم"]
+]
+};
+/* =================================================================== */
+
+const $=id=>document.getElementById(id);
+const COL='students_'+CONFIG.lessonId;
+const useFB=CONFIG.firebase.projectId && !CONFIG.firebase.apiKey.startsWith("ضع");
+let db=null; if(useFB){firebase.initializeApp(CONFIG.firebase);db=firebase.firestore();}
+$('tName').textContent=CONFIG.teacher;$('lTitle').textContent=CONFIG.lesson;$('lSub').textContent=CONFIG.subtitle;
+$('lessonInfo').textContent=CONFIG.info;$('defTxt').textContent=CONFIG.def;$('sumBox').innerHTML=CONFIG.lessonHtml;
+$('vid').innerHTML=CONFIG.video?`<iframe src="${CONFIG.video}" allowfullscreen loading="lazy"></iframe>`:'<div>🎬 الفيديو قريبًا</div>';
+$('exList').innerHTML=CONFIG.exercises.map(e=>`<details class="ex"><summary><b>${e[0]}</b></summary><p>${e[1]}</p><details><summary>عرض الحل</summary><div class="sol">${e[2]}</div></details></details>`).join('');
+$('mmTree').innerHTML=CONFIG.tree.map(b=>`<div class="br"><b>${b[0]}</b><br>${b[1].map(x=>`<span>${x}</span>`).join('')}</div>`).join('');
+$('mmBtn').onclick=e=>{if(CONFIG.mindmapFile){$('mmBtn').href=CONFIG.mindmapFile;$('mmBtn').download='';}else{e.preventDefault();window.print()}};
+const TABS=[['pnEx','📝 التمارين'],['pnQz','✅ اختبار الفهم'],['pnMm','🧠 الخريطة الذهنية'],['pnCh','⚔️ التحدّي']];
+$('tabs').innerHTML=TABS.map((x,k)=>`<button data-p="${x[0]}" class="${k?'':'on'}">${x[1]}</button>`).join('');
+$('tabs').onclick=e=>{const p=e.target.dataset.p;if(!p)return;document.querySelectorAll('.pn').forEach(n=>n.classList.toggle('hide',n.id!==p));[...$('tabs').children].forEach(b=>b.classList.toggle('on',b.dataset.p===p))};$('fTeacher').textContent=CONFIG.teacher;document.title=CONFIG.lesson;
+
+const screens=['sReg','sHome','sQuiz','sEnd'];
+const show=id=>screens.forEach(s=>$(s).classList.toggle('hide',s!==id));
+const me=()=>JSON.parse(localStorage.getItem('student')||'null');
+const esc=s=>String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+
+/* ---- التخزين: Firestore أو محلي ---- */
+const Store={
+  async get(id){ if(db){const d=await db.collection(COL).doc(id).get();return d.exists?d.data():null}
+    return (JSON.parse(localStorage.getItem('db')||'{}'))[id]||null },
+  async set(id,data){ if(db) return db.collection(COL).doc(id).set(data,{merge:true});
+    const all=JSON.parse(localStorage.getItem('db')||'{}');all[id]={...(all[id]||{}),...data};localStorage.setItem('db',JSON.stringify(all)) },
+  async all(){ if(db){const s=await db.collection(COL).orderBy('bestScore','desc').limit(200).get();return s.docs.map(d=>({id:d.id,...d.data()}))}
+    const all=JSON.parse(localStorage.getItem('db')||'{}');return Object.keys(all).map(k=>({id:k,...all[k]})) }
+};
+const rank=a=>a.sort((x,y)=>(y.bestScore||0)-(x.bestScore||0)||(x.bestTime||9e9)-(y.bestTime||9e9));
+
+/* ---- التسجيل ---- */
+$('btnReg').onclick=async()=>{
+  const name=$('fn').value.trim(),phone=$('ph').value.replace(/\D/g,'');
+  if(name.length<3||phone.length<8) return alert('أدخل اسمك الكامل ورقم هاتف صحيح');
+  const old=await Store.get(phone);
+  await Store.set(phone,{name,phone,registeredAt:old?.registeredAt||Date.now()});
+  localStorage.setItem('student',JSON.stringify({id:phone,name}));home();
+};
+
+/* ---- الرئيسية ولوحة الشرف ---- */
+function board(list,el,meId){
+  el.innerHTML=rank(list).filter(s=>s.attempts).slice(0,20).map((s,i)=>
+   `<li class="${s.id===meId?'me':''}"><b>${i+1}</b><span>${esc(s.name)}</span><em>${s.bestScore}</em></li>`).join('')||'<li>كن أوّل المشاركين!</li>';
+}
+async function home(){
+  const u=me();show('sHome');$('hi').textContent='مرحبًا '+u.name.split(' ')[0]+' ✦';
+  const d=await Store.get(u.id);
+  $('mine').textContent=d?.attempts?`أفضل نتيجة لك: ${d.bestScore} نقطة · محاولات: ${d.attempts}`:'';
+  board(await Store.all(),$('lb1'),u.id);
+}
+
+/* ---- المسابقة ---- */
+let Q=[],i=0,score=0,t0=0,left=0,timer=null,totalT=0,locked=false,timed=true;
+const shuffle=a=>a.map(v=>[Math.random(),v]).sort((x,y)=>x[0]-y[0]).map(x=>x[1]);
+function startQuiz(tm){timed=tm;
+  Q=shuffle(CONFIG.questions).slice(0,CONFIG.perRound).map(a=>{const o=a.slice(1).map((t,k)=>({t,ok:k===0}));return{q:a[0],o:o.length===2?o.sort((x,y)=>(y.t==='صحيح')-(x.t==='صحيح')):shuffle(o)}});
+  i=0;score=0;totalT=0;show('sQuiz');ask();
+}
+$('btnStart').onclick=()=>startQuiz(true);$('btnComp').onclick=()=>startQuiz(false);
+function ask(){
+  locked=false;const x=Q[i];
+  $('qn').textContent=`السؤال ${i+1} / ${Q.length}`;$('sc').textContent=`⭐ ${score}`;$('qt').textContent=x.q;
+  $('opts').innerHTML='';
+  x.o.forEach(o=>{const b=document.createElement('button');b.className='opt';b.textContent=o.t;b.onclick=()=>pick(b,o);$('opts').appendChild(b)});
+  $('tb').parentNode.style.visibility=timed?'':'hidden';clearInterval(timer);
+  if(timed){left=CONFIG.secondsPerQuestion;t0=Date.now();tick();timer=setInterval(()=>{left--;tick();if(left<=0)pick(null,null)},1000)}
+}
+function tick(){$('tb').style.width=(left/CONFIG.secondsPerQuestion*100)+'%'}
+function pick(btn,o){
+  if(locked)return;locked=true;clearInterval(timer);
+  totalT+=Math.min((Date.now()-t0)/1000,CONFIG.secondsPerQuestion);
+  if(o&&o.ok)score+=timed?10+Math.ceil(Math.max(left,0)/2):1;
+  [...$('opts').children].forEach((b,k)=>{if(Q[i].o[k].ok)b.classList.add('ok')});
+  if(btn&&!o.ok)btn.classList.add('bad');
+  $('sc').textContent=`⭐ ${score}`;
+  setTimeout(()=>{++i<Q.length?ask():finish()},1100);
+}
+async function finish(){
+  if(!timed){$('fin').textContent=score+' / '+Q.length;$('finMsg').textContent='اختبار الفهم لا يدخل في الترتيب. جرّب التحدّي لتنافس زملاءك!';show('sEnd');return}
+  const u=me(),old=(await Store.get(u.id))||{};
+  const better=score>(old.bestScore||0)||(score===old.bestScore&&totalT<(old.bestTime||9e9));
+  await Store.set(u.id,{name:u.name,attempts:(old.attempts||0)+1,lastScore:score,lastAt:Date.now(),
+    ...(better?{bestScore:score,bestTime:Math.round(totalT)}:{})});
+  $('fin').textContent=score;
+  $('finMsg').textContent=better?'🎉 هذه أفضل نتيجة لك حتى الآن!':`أفضل نتيجة لك: ${old.bestScore}. حاول مجددًا لتتفوّق!`;
+  show('sEnd');
+}
+$('btnHome').onclick=home;
+
+me()?home():show('sReg');
+</script>
+</body>
+</html>
